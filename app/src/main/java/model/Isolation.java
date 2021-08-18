@@ -51,6 +51,8 @@ public class Isolation {
     }
     // --------------- End --------------- //
 
+
+
     // --------------- Functions starts here --------------- //
     public boolean getMedicalHelp (String[] s) {
         // TODO: determine from module parameters

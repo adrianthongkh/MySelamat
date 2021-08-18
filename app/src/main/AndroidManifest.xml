@@ -17,7 +17,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySelamat">
-        <activity android:name=".HomeIsolationActivity"></activity>
+
+        <activity
+            android:name=".HomeIsolationResultActivity"
+            android:label="Home Isolation Message">
+        </activity>
+
+        <activity android:name=".VaccineActivity" />
+
+        <activity
+            android:name=".HomeIsolationActivity"
+            android:label="Home Isolation" />
+
         <activity android:name=".RiskEvaluationActivity" />
         <activity android:name=".UpdateDetailsActivity" />
         <activity android:name=".RiskPredictionActivity" />
@@ -31,7 +42,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

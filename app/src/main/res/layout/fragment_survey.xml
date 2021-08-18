@@ -30,7 +30,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="451dp"
+        android:layout_height="370dp"
         android:background="#C6F497">
 
         <TextView
@@ -45,23 +45,51 @@
             android:typeface="monospace"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.099" />
+            app:layout_constraintVertical_bias="0.064" />
 
         <ImageButton
             android:id="@+id/btn_riskEvaluation"
-            android:layout_width="121dp"
-            android:layout_height="99dp"
+            android:layout_width="109dp"
+            android:layout_height="90dp"
             android:background="#00FFFFFF"
             android:src="@drawable/ic_baseline_fact_check_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.141"
+            app:layout_constraintHorizontal_bias="0.162"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.468" />
+            app:layout_constraintVertical_bias="0.315" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Home Isolation"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.875"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.554" />
+
+        <ImageButton
+            android:id="@+id/btn_homeIsolation"
+            android:layout_width="118dp"
+            android:layout_height="115dp"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_baseline_view_module_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.863"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.303" />
 
         <TextView
             android:id="@+id/textView2"
@@ -77,36 +105,35 @@
             app:layout_constraintHorizontal_bias="0.143"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_riskEvaluation"
-            app:layout_constraintVertical_bias="0.115" />
+            app:layout_constraintVertical_bias="0.18" />
 
         <ImageButton
-            android:id="@+id/btn_homeIsolation"
-            android:layout_width="112dp"
-            android:layout_height="118dp"
+            android:id="@+id/btn_vaccine"
+            android:layout_width="113dp"
+            android:layout_height="116dp"
             android:background="#00FFFFFF"
-            android:src="@drawable/ic_baseline_view_module_24"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@mipmap/ic_syringe_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.846"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.471" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.839" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-black"
-            android:text="Home Isolation"
+            android:text="Vaccine Suitability"
             android:textColor="#000000"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.875"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_homeIsolation"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

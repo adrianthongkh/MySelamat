@@ -2,6 +2,8 @@ package model;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class User {
@@ -10,7 +12,6 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private List<Premises> premisesList;
 
     // ---------- Constructor, Getters & Setters ---------- //
     public User(String username, String password, String email, String phone) {
@@ -58,20 +59,20 @@ public class User {
 
 
     // --------------- Functions starts here --------------- //
-    public void createAccount(String[] s) {
+    public void createAccount() {
         // TODO: create account and add to database
     }
 
-    public void resetEmail(String username, String newEmail) {
+    public void resetEmail(String newEmail) {
         // TODO: update Email
     }
 
-    public void resetPass(String username, String newPass) {
+    public void resetPass(String oldPass, String newPass) {
         // TODO: update Password
     }
 
-    public boolean login(String username, String password) {
-        // TODO: perform login and validate from server
+    public boolean verify() {
+        // TODO: validate from server whether username exists / correct password
         return true;
     }
 
@@ -80,14 +81,24 @@ public class User {
         return 0.00;
     }
 
-    public User findUser(String username) {
+    public User findUser() {
         // TODO: find User based on username
         return new User();
     }
 
-    public List<Premises> getPremisesList() {
-        // TODO: query database and return all premises (history)
-        return premisesList;
+    public void updateStatus() {
+        // TODO: perform status update and update status of Premise
     }
+
+    public List<Premises> getAllPremises() {
+        // TODO: Query from database and extract all premises
+        return new ArrayList<Premises>();
+    }
+
+    public List<Premises> getPremisesInTimeframe() {
+        // TODO: query from database and extract premises within timeframe
+        return new ArrayList<Premises>();
+    }
+
     // -------------------- End -------------------- //
 }

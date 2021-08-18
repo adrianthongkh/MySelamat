@@ -1,7 +1,6 @@
 package my.edu.utar.myselamat;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,32 +37,23 @@ public class ProfileFragment extends Fragment {
 
         ImageButton[] imageButtons = {getView().findViewById(R.id.btn_history), getView().findViewById(R.id.btn_riskPrediction), getView().findViewById(R.id.btn_updateDetails)};
 
-        imageButtons[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // switch to history activity
-                Intent intent = new Intent(view.getContext(), HistoryActivity.class);
-                startActivity(intent);
-            }
+        imageButtons[0].setOnClickListener(v -> {
+            // switch to history activity
+            Intent intent = new Intent(view.getContext(), HistoryActivity.class);
+            startActivity(intent);
         });
 
-        imageButtons[1].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // switch to risk prediction activity
-                Intent intent = new Intent(view.getContext(), RiskPredictionActivity.class);
-                startActivity(intent);
-            }
+        imageButtons[1].setOnClickListener(v -> {
+            // switch to risk prediction activity
+            Intent intent = new Intent(view.getContext(), RiskPredictionActivity.class);
+            startActivity(intent);
         });
 
-        imageButtons[2].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        imageButtons[2].setOnClickListener(v -> {
 
-                // switch to update details activity
-                Intent intent = new Intent(view.getContext(), UpdateDetailsActivity.class);
-                startActivity(intent);
-            }
+            // switch to update details activity
+            Intent intent = new Intent(view.getContext(), UpdateDetailsActivity.class);
+            startActivity(intent);
         });
     }
 }

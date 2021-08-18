@@ -35,19 +35,18 @@ public class SurveyFragment extends Fragment {
 
         ImageButton btn_riskEvaluation = view.findViewById(R.id.btn_riskEvaluation);
         ImageButton btn_homeIsolation = view.findViewById(R.id.btn_homeIsolation);
+        ImageButton btn_vaccine = view.findViewById(R.id.btn_vaccine);
 
-        btn_riskEvaluation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(view.getContext(), RiskEvaluationActivity.class));
-            }
+        btn_riskEvaluation.setOnClickListener(v -> {
+            startActivity(new Intent(view.getContext(), RiskEvaluationActivity.class));
         });
 
-        btn_homeIsolation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(view.getContext(), HomeIsolationActivity.class));
-            }
+        btn_homeIsolation.setOnClickListener(v -> {
+            startActivity(new Intent(view.getContext(), HomeIsolationActivity.class));
+        });
+
+        btn_vaccine.setOnClickListener(v -> {
+            startActivity(new Intent(view.getContext(), VaccineActivity.class));
         });
 
     }
