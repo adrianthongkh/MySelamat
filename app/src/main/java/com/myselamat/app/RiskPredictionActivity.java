@@ -1,4 +1,4 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 

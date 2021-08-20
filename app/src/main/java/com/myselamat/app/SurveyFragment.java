@@ -1,7 +1,6 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 

@@ -1,8 +1,8 @@
-package util;
+package com.myselamat.util;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import model.Premises;
+import com.myselamat.model.Premises;
 
 public class Risk {
 

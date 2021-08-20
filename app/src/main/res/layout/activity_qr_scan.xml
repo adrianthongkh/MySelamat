@@ -5,7 +5,7 @@
     android:id="@+id/qrScanLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QRScanActivity">
+    tools:context="com.myselamat.app.QRScanActivity">
 
     <TextView
         android:id="@+id/tv_qrScan_demo"

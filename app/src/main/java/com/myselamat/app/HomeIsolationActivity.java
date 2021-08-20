@@ -1,4 +1,4 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import model.IsolationSurvey;
+import com.myselamat.model.IsolationSurvey;
 
 public class HomeIsolationActivity extends AppCompatActivity {
 

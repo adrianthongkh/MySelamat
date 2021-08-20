@@ -1,17 +1,8 @@
-package model;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+package com.myselamat.model;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.sql.Blob;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class Premises {
 

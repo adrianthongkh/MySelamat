@@ -1,4 +1,4 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
-import model.IsolationSurvey;
+import com.myselamat.model.IsolationSurvey;
 
 public class HomeIsoFragment extends Fragment {
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    tools:context=".RiskPredictionActivity">
+    tools:context="com.myselamat.app.RiskPredictionActivity">
 
     <TextView
         android:id="@+id/textView7"

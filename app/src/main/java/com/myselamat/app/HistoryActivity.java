@@ -1,14 +1,14 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class UpdateDetailsActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_details);
+        setContentView(R.layout.activity_history);
     }
 }

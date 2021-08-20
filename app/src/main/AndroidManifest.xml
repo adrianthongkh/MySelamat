@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="my.edu.utar.myselamat">
+    package="com.myselamat.app">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -20,27 +20,27 @@
         android:theme="@style/Theme.MySelamat">
 
         <activity
-            android:name=".HomeIsolationResultActivity"
+            android:name="com.myselamat.app.HomeIsolationResultActivity"
             android:label="Home Isolation Message">
         </activity>
 
-        <activity android:name=".VaccineActivity" />
+        <activity android:name="com.myselamat.app.VaccineActivity" />
 
         <activity
-            android:name=".HomeIsolationActivity"
+            android:name="com.myselamat.app.HomeIsolationActivity"
             android:label="Home Isolation" />
 
-        <activity android:name=".RiskEvaluationActivity" />
-        <activity android:name=".UpdateDetailsActivity" />
-        <activity android:name=".RiskPredictionActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".QRScanActivity" />
+        <activity android:name="com.myselamat.app.RiskEvaluationActivity" />
+        <activity android:name="com.myselamat.app.UpdateDetailsActivity" />
+        <activity android:name="com.myselamat.app.RiskPredictionActivity" />
+        <activity android:name="com.myselamat.app.HistoryActivity" />
+        <activity android:name="com.myselamat.app.QRScanActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.myselamat.app.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,10 +1,9 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
@@ -12,14 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import androidx.appcompat.widget.Toolbar;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 

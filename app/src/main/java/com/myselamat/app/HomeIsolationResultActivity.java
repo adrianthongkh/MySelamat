@@ -1,4 +1,4 @@
-package my.edu.utar.myselamat;
+package com.myselamat.app;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
 
-import model.IsolationSurvey;
+import com.myselamat.model.IsolationSurvey;
 
 public class HomeIsolationResultActivity extends AppCompatActivity {
 

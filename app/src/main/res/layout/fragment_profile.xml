@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_200"
-    tools:context=".ProfileFragment">
+    tools:context="com.myselamat.app.ProfileFragment">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView4"

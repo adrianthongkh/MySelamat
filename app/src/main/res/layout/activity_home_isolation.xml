@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context=".HomeIsolationActivity">
+    tools:context="com.myselamat.app.HomeIsolationActivity">
 
     <include
         android:id="@+id/include"

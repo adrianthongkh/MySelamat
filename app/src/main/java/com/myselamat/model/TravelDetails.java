@@ -1,4 +1,4 @@
-package model;
+package com.myselamat.model;
 
 import java.sql.Time;
 

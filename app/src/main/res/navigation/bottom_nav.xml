@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="my.edu.utar.myselamat.ProfileFragment"
+        android:name="com.myselamat.app.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
         android:id="@+id/hotspotFragment"
-        android:name="my.edu.utar.myselamat.HotspotFragment"
+        android:name="com.myselamat.app.HotspotFragment"
         android:label="fragment_hotspot"
         tools:layout="@layout/fragment_hotspot"/>
 
     <fragment
         android:id="@+id/surveyFragment"
-        android:name="my.edu.utar.myselamat.SurveyFragment"
+        android:name="com.myselamat.app.SurveyFragment"
         android:label="fragment_survey"
         tools:layout="@layout/fragment_survey"/>
 
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="my.edu.utar.myselamat.StatisticsFragment"
+        android:name="com.myselamat.app.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics"/>
 
