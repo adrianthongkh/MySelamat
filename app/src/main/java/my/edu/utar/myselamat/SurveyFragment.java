@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
+
 import org.jetbrains.annotations.NotNull;
 
 public class SurveyFragment extends Fragment {
@@ -33,9 +35,9 @@ public class SurveyFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
-        ImageButton btn_riskEvaluation = view.findViewById(R.id.btn_riskEvaluation);
-        ImageButton btn_homeIsolation = view.findViewById(R.id.btn_homeIsolation);
-        ImageButton btn_vaccine = view.findViewById(R.id.btn_vaccine);
+        CircularImageView btn_riskEvaluation = view.findViewById(R.id.btn_riskEvaluation);
+        CircularImageView btn_homeIsolation = view.findViewById(R.id.btn_homeIsolation);
+        CircularImageView btn_vaccine = view.findViewById(R.id.btn_vaccine);
 
         btn_riskEvaluation.setOnClickListener(v -> {
             startActivity(new Intent(view.getContext(), RiskEvaluationActivity.class));

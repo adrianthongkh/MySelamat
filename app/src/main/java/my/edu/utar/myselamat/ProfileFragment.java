@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
+
 import org.jetbrains.annotations.NotNull;
 
 public class ProfileFragment extends Fragment {
@@ -35,25 +37,29 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton[] imageButtons = {getView().findViewById(R.id.btn_history), getView().findViewById(R.id.btn_riskPrediction), getView().findViewById(R.id.btn_updateDetails)};
+        CircularImageView img_history = view.findViewById(R.id.btn_history);
+        CircularImageView img_risk_prediction = view.findViewById(R.id.btn_riskPrediction);
+        CircularImageView img_profile = view.findViewById(R.id.btn_updateDetails);
 
-        imageButtons[0].setOnClickListener(v -> {
-            // switch to history activity
-            Intent intent = new Intent(view.getContext(), HistoryActivity.class);
-            startActivity(intent);
+        img_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), HistoryActivity.class));
+            }
         });
 
-        imageButtons[1].setOnClickListener(v -> {
-            // switch to risk prediction activity
-            Intent intent = new Intent(view.getContext(), RiskPredictionActivity.class);
-            startActivity(intent);
+        img_risk_prediction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), RiskPredictionActivity.class));
+            }
         });
 
-        imageButtons[2].setOnClickListener(v -> {
-
-            // switch to update details activity
-            Intent intent = new Intent(view.getContext(), UpdateDetailsActivity.class);
-            startActivity(intent);
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), UpdateDetailsActivity.class));
+            }
         });
     }
 }
