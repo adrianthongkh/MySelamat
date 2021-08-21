@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_blue"
-    tools:context="com.myselamat.app.HomeIsolationResultActivity">
+    tools:context="com.myselamat.HomeIsolationResultActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

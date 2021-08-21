@@ -5,7 +5,7 @@
     android:id="@+id/hotspotLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.myselamat.app.HotspotFragment">
+    tools:context="com.myselamat.HotspotFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <fragment

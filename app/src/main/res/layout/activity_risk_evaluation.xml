@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.myselamat.app.RiskEvaluationActivity">
+    tools:context="com.myselamat.RiskEvaluationActivity">
 
     <TextView
         android:id="@+id/tv_riskEvaluation_demo"

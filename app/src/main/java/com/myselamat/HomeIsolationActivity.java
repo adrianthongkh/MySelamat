@@ -1,4 +1,4 @@
-package com.myselamat.app;
+package com.myselamat;
 
 import androidx.appcompat.app.AppCompatActivity;
 

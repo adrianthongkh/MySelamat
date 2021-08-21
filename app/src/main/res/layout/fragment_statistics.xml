@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#473F97"
-    tools:context="com.myselamat.app.StatisticsFragment">
+    tools:context="com.myselamat.StatisticsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView5"

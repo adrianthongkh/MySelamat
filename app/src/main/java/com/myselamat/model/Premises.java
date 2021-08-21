@@ -1,14 +1,13 @@
 package com.myselamat.model;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.sql.Blob;
+import com.google.firebase.firestore.GeoPoint;
 
 public class Premises {
 
-    private Blob qr_image;
-    private String premise_id;
-    private LatLng latLng;
+    private String docID;
+    private String qr_imagePath;
+    private String name;
+    private GeoPoint position;
     private boolean status;
 
     // ---------- Constructor, Getters & Setters ---------- //
@@ -16,35 +15,43 @@ public class Premises {
     public Premises() {
     }
 
-    public Premises(Blob qr_image, String premise_id, LatLng latLng, boolean status) {
-        this.qr_image = qr_image;
-        this.premise_id = premise_id;
-        this.latLng = latLng;
+    public Premises(String qr_imagePath, String name, GeoPoint position, boolean status) {
+        this.qr_imagePath = qr_imagePath;
+        this.name = name;
+        this.position = position;
         this.status = status;
     }
 
-    public Blob getQr_image() {
-        return qr_image;
+    public String getDocID() {
+        return docID;
     }
 
-    public void setQr_image(Blob qr_image) {
-        this.qr_image = qr_image;
+    public void setDocID(String docID) {
+        this.docID = docID;
     }
 
-    public String getPremise_id() {
-        return premise_id;
+    public String getQr_imagePath() {
+        return qr_imagePath;
     }
 
-    public void setPremise_id(String premise_id) {
-        this.premise_id = premise_id;
+    public void setQr_imagePath(String qr_imagePath) {
+        this.qr_imagePath = qr_imagePath;
     }
 
-    public LatLng getLatLng() {
-        return latLng;
+    public String getName() {
+        return name;
     }
 
-    public void setLatLng(LatLng latLng) {
-        this.latLng = latLng;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public GeoPoint getPosition() {
+        return position;
+    }
+
+    public void setPosition(GeoPoint position) {
+        this.position = position;
     }
 
     public boolean isStatus() {

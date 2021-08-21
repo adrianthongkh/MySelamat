@@ -1,14 +1,14 @@
-package com.myselamat.app;
+package com.myselamat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class HistoryActivity extends AppCompatActivity {
+public class UpdateDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_update_details);
     }
 }

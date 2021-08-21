@@ -11,27 +11,13 @@ public class IsolationSurvey implements Serializable {
     private Boolean question5;
 
     private boolean severity;
-    private int rating;
 
     public IsolationSurvey() {
-    }
-
-    public IsolationSurvey(boolean question1, boolean question2, boolean question3, boolean question4, boolean question5, int rating) {
-        this.question1 = question1;
-        this.question2 = question2;
-        this.question3 = question3;
-        this.question4 = question4;
-        this.question5 = question5;
-        this.rating = rating;
     }
 
     public boolean isSeverity() { return severity; }
 
     public void setSeverity(boolean severity) { this.severity = severity; }
-
-    public int getRating() { return rating; }
-
-    public void setRating(int rating) { this.rating = rating; }
 
     public String getWarning() { return "Please answer the following questions with honesty as this assessment concerns your health."; }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509069575942",
+    "project_id": "myselamat-4cf00",
+    "storage_bucket": "myselamat-4cf00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509069575942:android:9f360792fc0964a43ac087",
+        "android_client_info": {
+          "package_name": "com.myselamat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509069575942-2vued4q2a70i3qul8r023df9apgtvkha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsNRwEyYB1Y1aBlDN2vKGyzDWIas0fhok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509069575942-2vued4q2a70i3qul8r023df9apgtvkha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

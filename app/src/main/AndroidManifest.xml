@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.myselamat.app">
+    package="com.myselamat">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -8,7 +8,7 @@
     -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -20,27 +20,27 @@
         android:theme="@style/Theme.MySelamat">
 
         <activity
-            android:name="com.myselamat.app.HomeIsolationResultActivity"
+            android:name="com.myselamat.HomeIsolationResultActivity"
             android:label="Home Isolation Message">
         </activity>
 
-        <activity android:name="com.myselamat.app.VaccineActivity" />
+        <activity android:name="com.myselamat.VaccineActivity" />
 
         <activity
-            android:name="com.myselamat.app.HomeIsolationActivity"
+            android:name="com.myselamat.HomeIsolationActivity"
             android:label="Home Isolation" />
 
-        <activity android:name="com.myselamat.app.RiskEvaluationActivity" />
-        <activity android:name="com.myselamat.app.UpdateDetailsActivity" />
-        <activity android:name="com.myselamat.app.RiskPredictionActivity" />
-        <activity android:name="com.myselamat.app.HistoryActivity" />
-        <activity android:name="com.myselamat.app.QRScanActivity" />
+        <activity android:name="com.myselamat.RiskEvaluationActivity" />
+        <activity android:name="com.myselamat.UpdateDetailsActivity" />
+        <activity android:name="com.myselamat.RiskPredictionActivity" />
+        <activity android:name="com.myselamat.HistoryActivity" />
+        <activity android:name="com.myselamat.QRScanActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.myselamat.app.MainActivity">
+        <activity android:name="com.myselamat.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
