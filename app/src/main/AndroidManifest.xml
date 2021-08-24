@@ -18,31 +18,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySelamat">
-
         <activity
-            android:name="com.myselamat.HomeIsolationResultActivity"
-            android:label="Home Isolation Message">
-        </activity>
-
-        <activity android:name="com.myselamat.VaccineActivity" />
-
+            android:name=".ViewProfileActivity"
+            android:exported="true" />
         <activity
-            android:name="com.myselamat.HomeIsolationActivity"
+            android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".HomeIsolationResultActivity"
+            android:label="Home Isolation Message" />
+        <activity android:name=".VaccineActivity" />
+        <activity
+            android:name=".HomeIsolationActivity"
             android:label="Home Isolation" />
-
-        <activity android:name="com.myselamat.RiskEvaluationActivity" />
-        <activity android:name="com.myselamat.UpdateDetailsActivity" />
-        <activity android:name="com.myselamat.RiskPredictionActivity" />
-        <activity android:name="com.myselamat.HistoryActivity" />
-        <activity android:name="com.myselamat.QRScanActivity" />
+        <activity android:name=".RiskEvaluationActivity" />
+        <activity android:name=".UpdateDetailsActivity" />
+        <activity android:name=".RiskPredictionActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".QRScanActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.myselamat.MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

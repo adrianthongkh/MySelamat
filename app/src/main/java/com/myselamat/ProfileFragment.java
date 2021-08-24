@@ -57,7 +57,7 @@ public class ProfileFragment extends Fragment {
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), UpdateDetailsActivity.class));
+                startActivity(new Intent(getContext(), ViewProfileActivity.class));
             }
         });
     }
