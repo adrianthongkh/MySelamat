@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseUser user;
+    Button newbtn;
 
     @Override
     public void onBackPressed() {
@@ -48,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
+        newbtn= findViewById(R.id.hi);
+        newbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toqr= new Intent(MainActivity.this,TOckotcam.class);
+                startActivity(toqr);
+            }
+        });
+
     }
 
     @Override
@@ -56,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.qr_scan, menu);
         return true;
     }
+
 
 
 }
