@@ -53,13 +53,14 @@ public class HomeIsolationResultActivity extends AppCompatActivity {
         }
         else {
             btn_call.setVisibility(View.INVISIBLE);
-            btn_homePage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
         }
+
+        btn_homePage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     public void checkPermission(String permission, int requestCode) {
 

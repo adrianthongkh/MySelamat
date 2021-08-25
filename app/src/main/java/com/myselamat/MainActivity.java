@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

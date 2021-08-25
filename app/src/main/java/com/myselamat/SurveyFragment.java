@@ -38,7 +38,7 @@ public class SurveyFragment extends Fragment {
         CircularImageView btn_vaccine = view.findViewById(R.id.btn_vaccine);
 
         btn_riskEvaluation.setOnClickListener(v -> {
-            startActivity(new Intent(view.getContext(), RiskEvaluationActivity.class));
+            startActivity(new Intent(view.getContext(), RiskEvaluationQuestionActivity.class));
         });
 
         btn_homeIsolation.setOnClickListener(v -> {
@@ -46,7 +46,7 @@ public class SurveyFragment extends Fragment {
         });
 
         btn_vaccine.setOnClickListener(v -> {
-            startActivity(new Intent(view.getContext(), VaccineActivity.class));
+            startActivity(new Intent(view.getContext(), VaccineQuestionActivity.class));
         });
 
     }

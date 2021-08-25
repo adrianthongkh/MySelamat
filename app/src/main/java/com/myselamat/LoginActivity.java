@@ -3,7 +3,9 @@ package com.myselamat;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,75 +21,104 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.myselamat.R;
 
+import org.jetbrains.annotations.NotNull;
+
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnlogin, btnregister;
-    EditText lemail, lpassword;
-    ImageView logo;
-    FirebaseAuth fAuth;
+    private FirebaseAuth fAuth;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        btnlogin = findViewById(R.id.btnlogin);
-        btnregister = findViewById(R.id.btnRegisterPage);
-
-        lemail = findViewById(R.id.etloginEmail);
-        lpassword= findViewById(R.id.etloginPassword);
 
         fAuth = FirebaseAuth.getInstance();
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // first time user
+        String exist_email = sharedPreferences.getString("email", null);
+        String exist_pass = sharedPreferences.getString("password", null);
 
-                String email = lemail.getText().toString().trim();
-                String password = lpassword.getText().toString().trim();
+        // first time user -> display login page
+        if (exist_email == null && exist_pass == null) {
 
-                if(TextUtils.isEmpty(email)){
-                    lemail.setError("Email is Required.");
-                    return;
-                }
+            setContentView(R.layout.activity_login);
 
-                if(TextUtils.isEmpty(password)){
-                    lpassword.setError("Password is Required.");
-                    return;
-                }
+            Button btnlogin, btnregister;
+            EditText lemail, lpassword;
 
-                if(password.length() < 6){
-                    lpassword.setError("Password Must be >= 6 Characters");
-                    return;
-                }
+            btnlogin = findViewById(R.id.btnlogin);
+            btnregister = findViewById(R.id.btnRegisterPage);
 
+            lemail = findViewById(R.id.etloginEmail);
+            lpassword = findViewById(R.id.etloginPassword);
 
+            btnlogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+                    String email = lemail.getText().toString().trim();
+                    String password = lpassword.getText().toString().trim();
 
+                    if (TextUtils.isEmpty(email)) {
+                        lemail.setError("Email is Required.");
+                        return;
                     }
-                });
 
-            }
-        });
+                    if (TextUtils.isEmpty(password)) {
+                        lpassword.setError("Password is Required.");
+                        return;
+                    }
 
-        btnregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                    if (password.length() < 6) {
+                        lpassword.setError("Password Must be >= 6 Characters");
+                        return;
+                    }
 
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-            }
-        });
 
-       /*"Night Bae, Mua" "Tmr call me arouond 8am like that <3"*/
+                    fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                editor.putString("email", email);
+                                editor.putString("password", password);
+
+                                editor.commit();
+
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+
+                }
+            });
+
+            btnregister.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                }
+            });
+
+        } else {
+
+            fAuth.signInWithEmailAndPassword(exist_email, exist_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
+            });
+
+        }
 
     }
+
 }

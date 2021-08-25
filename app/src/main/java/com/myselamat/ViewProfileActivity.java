@@ -3,7 +3,9 @@ package com.myselamat;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +27,9 @@ public class ViewProfileActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
-    Button btnUpdate, btnlogout;
+    Button btnUpdate;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,6 @@ public class ViewProfileActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
-//                final User[] u = {new User()};
-//                u[0] = documentSnapshot.toObject(User.class);
                     phone.setText(documentSnapshot.getString("Phone"));
                     username.setText(documentSnapshot.getString("Username"));
                     email.setText(documentSnapshot.getString("Email"));
@@ -68,6 +70,13 @@ public class ViewProfileActivity extends AppCompatActivity {
 
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
+
+        sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.clear();
+        editor.commit();
+
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }

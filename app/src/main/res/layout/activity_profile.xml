@@ -28,7 +28,7 @@
         android:layout_width="131dp"
         android:layout_height="143dp"
         android:layout_marginTop="104dp"
-        android:src="@drawable/ic_person_black_24dp"
+        android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
