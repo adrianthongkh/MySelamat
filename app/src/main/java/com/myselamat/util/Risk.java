@@ -22,13 +22,17 @@ public class Risk {
         Premises premise = new Premises();
 
         for (Premises p : premises) {
+
+            if (!p.isStatus())
+                continue;
+
             Location end = new Location("");
             end.setLatitude(p.getPosition().getLatitude());
             end.setLongitude(p.getPosition().getLongitude());
 
             double result = start.distanceTo(end);
 
-            if (result < distance && p.isStatus()) {
+            if (result < distance) {
                 distance = result;
                 premise = p;
             }
@@ -53,7 +57,12 @@ public class Risk {
 
     public double calculateRisk(LatLng latLng, Premises p) {
 
-        double distance = getDistance(latLng, p);
+        double distance = 500;
+
+        if (p.getPosition() != null)
+            distance = getDistance(latLng, p);
+        else
+            return 0;
 
         return (1 - distance/500) * 100;
     }
