@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="220dp"
+    tools:context=".RiskEvaluationResultsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:textColor="#000"
+        android:fontFamily="casual"
+        android:layout_margin="16dp"
+        android:id="@+id/rGrade"
+        android:text="Low Risk"
+        android:gravity="center_horizontal" />
+
+
+    <Button
+        android:layout_below="@+id/rGrade"
+        android:id="@+id/rRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry Evaluation"
+        android:padding="8dp"
+        android:layout_margin="4dp"
+        android:textColor="#fff"
+        android:background="#4CAF50"
+        android:textSize="18sp"
+        android:fontFamily="casual"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

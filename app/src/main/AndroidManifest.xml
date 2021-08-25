@@ -8,7 +8,7 @@
     -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -30,10 +30,16 @@
             android:name=".HomeIsolationResultActivity"
             android:label="Home Isolation Message" />
         <activity android:name=".VaccineActivity" />
+        <activity android:name=".VaccineQuestionActivity"/>
+        <activity android:name=".VaccineResultsActivity"/>
         <activity
             android:name=".HomeIsolationActivity"
             android:label="Home Isolation" />
+
         <activity android:name=".RiskEvaluationActivity" />
+        <activity android:name=".RiskEvaluationQuestionActivity"/>
+        <activity android:name=".RiskEvaluationResultsActivity"/>
+
         <activity android:name=".UpdateDetailsActivity" />
         <activity android:name=".RiskPredictionActivity" />
         <activity android:name=".HistoryActivity" />
