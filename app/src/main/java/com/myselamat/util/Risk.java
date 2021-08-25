@@ -28,7 +28,7 @@ public class Risk {
 
             double result = start.distanceTo(end);
 
-            if (result < distance) {
+            if (result < distance && p.isStatus()) {
                 distance = result;
                 premise = p;
             }
@@ -51,9 +51,8 @@ public class Risk {
         return start.distanceTo(end);
     }
 
-    public double calculateRisk(LatLng latLng, ArrayList<Premises> premises) {
+    public double calculateRisk(LatLng latLng, Premises p) {
 
-        Premises p = findClosestInfected(latLng, premises);
         double distance = getDistance(latLng, p);
 
         return (1 - distance/500) * 100;

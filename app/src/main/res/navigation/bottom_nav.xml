@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
-        android:id="@+id/hotspotFragment"
-        android:name="com.myselamat.HotspotFragment"
+        android:id="@+id/QRFragment"
+        android:name="com.myselamat.QRFragment"
         android:label="fragment_hotspot"
-        tools:layout="@layout/fragment_hotspot"/>
+        tools:layout="@layout/fragment_qr"/>
 
     <fragment
         android:id="@+id/surveyFragment"

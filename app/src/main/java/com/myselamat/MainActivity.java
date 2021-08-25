@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView btn_back = findViewById(R.id.menuBtn);
+        ImageView btn_back = findViewById(R.id.backBtn);
         btn_back.setVisibility(View.INVISIBLE);
 
 
@@ -55,14 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.qr_scan, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        startActivity(new Intent(this, QRScanActivity.class));
-
-        return super.onOptionsItemSelected(item);
     }
 
 

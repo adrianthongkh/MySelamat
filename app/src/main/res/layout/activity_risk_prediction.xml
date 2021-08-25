@@ -7,6 +7,10 @@
     android:background="@color/light_blue"
     tools:context="com.myselamat.RiskPredictionActivity">
 
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/main_toolbar" />
+
     <TextView
         android:id="@+id/tv_rp_header"
         android:layout_width="wrap_content"
@@ -19,10 +23,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintVertical_bias="0.151" />
 
     <ProgressBar
         android:id="@+id/progress_anim"
@@ -34,41 +38,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_rp_header"
-        app:layout_constraintVertical_bias="0.105" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <TextView
         android:id="@+id/tv_riskResult"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@color/light_light_blue"
         android:gravity="center"
         android:padding="25dp"
         android:text="Your Risk is\nXXX"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="monospace"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_anim"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintVertical_bias="0.266" />
+
+    <fragment
+        android:id="@+id/google_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_risk_pred_return"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_riskResult"
+        app:layout_constraintVertical_bias="0.437" />
 
     <Button
         android:id="@+id/btn_risk_pred_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:padding="20dp"
         android:text="Back To\nHome Page"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_riskResult"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.951" />
 
     <Button
         android:id="@+id/btn_getRisk"
@@ -77,10 +97,10 @@
         android:padding="30dp"
         android:text="Get Risk"
         android:textSize="30sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
