@@ -42,7 +42,13 @@ public class SurveyFragment extends Fragment {
         });
 
         btn_homeIsolation.setOnClickListener(v -> {
-            startActivity(new Intent(view.getContext(), HomeIsolationActivity.class));
+
+            boolean isInfected = getActivity().getIntent().getBooleanExtra("status", false);
+
+            Intent intent = new Intent(getContext(), HomeIsolationActivity.class);
+            intent.putExtra("status", isInfected);
+
+            startActivity(intent);
         });
 
         btn_vaccine.setOnClickListener(v -> {

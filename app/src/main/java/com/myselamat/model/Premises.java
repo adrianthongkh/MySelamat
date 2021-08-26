@@ -64,18 +64,4 @@ public class Premises {
 
     // -------------------- End -------------------- //
 
-
-    // --------------- Functions starts here --------------- //
-    public void add_visitor(User user) {
-        // TODO: add user to database during check-in
-    }
-
-    public void updateStatus() {
-        status = status ? false : true;
-    }
-
-    public void checkStatus() {
-        // TODO: Check whether the coast is clear (e.g. not infected)
-    }
 }
-// -------------------- End -------------------- //

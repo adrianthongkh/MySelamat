@@ -15,15 +15,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseUser user;
-    Button newbtn;
+    private FirebaseFirestore db;
+    private boolean isInfected;
 
     @Override
     public void onBackPressed() {
@@ -43,6 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
+
+        // Get information from database
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    if (doc.exists()) {
+                         isInfected = doc.getBoolean("status");
+                         getIntent().putExtra("status", isInfected);
+
+                    }
+                }
+            }
+        });
 
         // Initialize bottom navigation view
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);

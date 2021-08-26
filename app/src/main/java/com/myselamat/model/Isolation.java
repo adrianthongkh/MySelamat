@@ -4,26 +4,19 @@ import java.util.Date;
 
 public class Isolation {
 
-    private User user;
+    private String uid;         // for user referencing
     private Date startDate;
-    private Date endDate;
+    private int day_count;
     private boolean status;
 
-    // --------------- Constructor, Setter and Getter --------------- //
     public Isolation() {}
 
-    public Isolation(User user, Date startDate, Date endDate) {
-        this.user = user;
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public String getUid() {
+        return uid;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public Date getStartDate() {
@@ -34,12 +27,12 @@ public class Isolation {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public int getDay_count() {
+        return day_count;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDay_count(int day_count) {
+        this.day_count = day_count;
     }
 
     public boolean isStatus() {
@@ -48,22 +41,5 @@ public class Isolation {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-    // --------------- End --------------- //
-
-
-
-    // --------------- Functions starts here --------------- //
-    public boolean getMedicalHelp (String[] s) {
-        // TODO: determine from module parameters
-        return false;
-    }
-
-    public void updateStatus() {
-        status = status ? false : true;
-    }
-
-    public void addIsolation(Isolation iso) {
-        // TODO: add isolation information to database
     }
 }

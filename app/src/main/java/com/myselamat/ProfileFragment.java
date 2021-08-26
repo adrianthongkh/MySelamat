@@ -1,5 +1,7 @@
 package com.myselamat;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -37,8 +40,9 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         CircularImageView img_history = view.findViewById(R.id.btn_history);
-        CircularImageView img_risk_prediction = view.findViewById(R.id.btn_riskPrediction);
+        CircularImageView img_risk_prediction = view.findViewById(R.id.btn_risk_pred);
         CircularImageView img_profile = view.findViewById(R.id.btn_updateDetails);
+        CircularImageView img_update = view.findViewById(R.id.btn_update);
 
         img_history.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +62,33 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), ViewProfileActivity.class));
+            }
+        });
+
+        img_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setCancelable(true);
+                builder.setMessage("By doing so, your covid status will be set to positive.\nProceed?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO: update users database
+                        Toast.makeText(getContext(), "Covid status set to positive.", Toast.LENGTH_SHORT).show();
+
+                        // TODO: update premises database
+                    }
+                });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
