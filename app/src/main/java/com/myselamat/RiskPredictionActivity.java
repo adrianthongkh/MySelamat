@@ -11,6 +11,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
@@ -52,6 +53,7 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.ACCESS_WIFI_STATE;
 
@@ -63,6 +65,7 @@ public class RiskPredictionActivity extends AppCompatActivity {
     private ArrayList<Premises> premises;
     private Location self_location;
     private static final String[] PERMISSIONS = {
+            ACCESS_COARSE_LOCATION,
             ACCESS_FINE_LOCATION,
             ACCESS_WIFI_STATE
     };
@@ -80,10 +83,6 @@ public class RiskPredictionActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -193,6 +192,10 @@ public class RiskPredictionActivity extends AppCompatActivity {
 
         Premises p = risk.findClosestInfected(new LatLng(self_location.getLatitude(), self_location.getLongitude()), premises);
         riskScore = risk.calculateRisk(new LatLng(self_location.getLatitude(), self_location.getLongitude()), p);
+
+        SharedPreferences preferences = getSharedPreferences("risk", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -204,10 +207,17 @@ public class RiskPredictionActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
                 btn_return.setVisibility(View.VISIBLE);
                 btn_explore.setVisibility(View.VISIBLE);
-                if (riskScore != 0)
+
+                if (riskScore != 0) {
+
                     displayMap(p);
+                    editor.putString("score", df2.format(riskScore));
+                    editor.commit();
+
+                }
                 else {
                     tv_riskMessage.setVisibility(View.VISIBLE);
+
                 }
             }
         }, 2500);

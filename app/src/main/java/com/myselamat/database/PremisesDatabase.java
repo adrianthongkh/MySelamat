@@ -49,20 +49,4 @@ public class PremisesDatabase {
         return premises;
     }
 
-    public static Premises findPremises(String docId) {
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference ref = db.collection("premises").document(docId);
-        final Premises[] p = {new Premises()};
-
-        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                p[0] = documentSnapshot.toObject(Premises.class);
-            }
-        });
-
-        return p[0];
-    }
-
 }
