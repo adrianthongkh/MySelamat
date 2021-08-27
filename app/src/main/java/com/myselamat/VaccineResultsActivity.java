@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class VaccineResultsActivity extends AppCompatActivity {
 
     TextView vGrade;
-    Button vRetryButton;
+    Button vRetryButton, vBackButton;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -22,15 +22,16 @@ public class VaccineResultsActivity extends AppCompatActivity {
 
         vGrade = (TextView)findViewById(R.id.vGrade);
         vRetryButton = (Button)findViewById(R.id.vRetry);
+        vBackButton = (Button)findViewById(R.id.vBack);
 
 
         Bundle bundle = getIntent().getExtras();
         int score = bundle.getInt("finalScore");
 
         if (score >= 3){
-            vGrade.setText("Please show this message to the doctor \n Only Sinovac is Recommended");
+            vGrade.setText("Please show this message to the doctor present. \n Only Sinovac is Recommended");
         }else {
-            vGrade.setText("All Vaccines are suitable \n Sinovac, AZ, Pfizer, J&J are Recommended");
+            vGrade.setText("All Vaccines are suitable. \n Sinovac, AZ, Pfizer, J&J are Recommended");
         }
 
         vRetryButton.setOnClickListener(new View.OnClickListener() {
@@ -41,5 +42,12 @@ public class VaccineResultsActivity extends AppCompatActivity {
             }
         });
 
+        vBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(VaccineResultsActivity.this, MainActivity.class));
+                VaccineResultsActivity.this.finish();
+            }
+        });
     }
 }

@@ -7,8 +7,8 @@ public class RiskEvaluationQuestionBook {
             "2. Are you experiencing any Body Aches, Head Aches and Fatigue?",
             "3. Are you exhibiting Sore Throat, Runny Nose and Nausea?",
             "4. Are you Coughing and having difficulty in Breathing?",
-            "5. Have you lost your Sense of Smell and Taste?",
-            "6. Have you been in contact/associated with a known COVID-19 cluster or confirmed case?",
+            "5. Have you lost any of your Sense of Smell and Taste?",
+            "6. Have you been in contact with known COVID-19 cluster / confirmed case?",
     };
 
     public static boolean[] answers = new boolean[]{

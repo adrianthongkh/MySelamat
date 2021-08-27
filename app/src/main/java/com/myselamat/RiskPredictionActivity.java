@@ -83,6 +83,11 @@ public class RiskPredictionActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 
     @SuppressLint("MissingPermission")
     @Override

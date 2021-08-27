@@ -106,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                         user.put("Email",email);
                         user.put("Password",password);
                         user.put("Phone",phone);
+                        user.put("status", false);
                         documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

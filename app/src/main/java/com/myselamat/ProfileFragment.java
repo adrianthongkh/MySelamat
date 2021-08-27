@@ -14,11 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.jetbrains.annotations.NotNull;
 
 public class ProfileFragment extends Fragment {
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -65,6 +73,9 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         img_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,10 +86,20 @@ public class ProfileFragment extends Fragment {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO: update users database
-                        Toast.makeText(getContext(), "Covid status set to positive.", Toast.LENGTH_SHORT).show();
+                        boolean isInfected = getActivity().getIntent().getBooleanExtra("status", false);
 
-                        // TODO: update premises database
+                        if (!isInfected) {
+                            db.collection("users").document(user.getUid()).update("status", true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(getContext(), "Covid-19 status set to positive.", Toast.LENGTH_SHORT).show();
+                                    getActivity().getIntent().putExtra("status", true);
+                                    // TODO: update premises database
+                                }
+                            });
+                        } else {
+                            Toast.makeText(getContext(), "Covid-19 status is already positive.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {

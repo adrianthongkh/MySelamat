@@ -25,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         // Get information from database
         db = FirebaseFirestore.getInstance();
 
+        // check covid status
         db.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {

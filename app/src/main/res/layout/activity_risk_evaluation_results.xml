@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="220dp"
+    android:background="#E0FFFF"
     tools:context=".RiskEvaluationResultsActivity">
 
     <TextView
@@ -11,12 +11,15 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:padding="16dp"
+        android:paddingTop="220dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="140dp"
         android:textColor="#000"
         android:fontFamily="casual"
         android:layout_margin="16dp"
         android:id="@+id/rGrade"
-        android:text="Low Risk"
+        android:text="Low Risk \n Just a common cold, no worries, rest up and you will be well soon. Stay Safe :)"
         android:gravity="center_horizontal" />
 
 
@@ -26,13 +29,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Retry Evaluation"
-        android:padding="8dp"
+        android:padding="20dp"
         android:layout_margin="4dp"
         android:textColor="#fff"
-        android:background="#4CAF50"
-        android:textSize="18sp"
+        android:textSize="20dp"
         android:fontFamily="casual"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rRetry"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:text="Back to Home"
+        android:id="@+id/rBack"/>
 
 </RelativeLayout>

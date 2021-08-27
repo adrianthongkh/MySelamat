@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".VaccineQuestionActivity"
-    android:paddingTop="200dp">
+    android:background="#E0FFFF"
+    tools:context=".VaccineQuestionActivity">
 
 
     <TextView
@@ -15,14 +15,18 @@
         android:textAlignment="center"
         android:fontFamily="casual"
         android:id="@+id/vQuestion"
-        android:textSize="18sp"
-        android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="1. Are you currently pregnant or suspected to be?"/>
+        android:textSize="24dp"
+        android:paddingTop="200dp"
+        android:paddingBottom="200dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="1. Are you currently or suspecting that you might be pregnant?"/>
 
 
     <LinearLayout
         android:orientation="horizontal"
+        android:background="@color/blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,10 +35,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Yes"
+            android:textSize="30dp"
             android:id="@+id/vYesButton"
             android:textColor="#fff"
             android:fontFamily="casual"
-            android:background="#2196F3"
             android:layout_marginRight="4dp"
             android:layout_marginLeft="4dp"/>
 
@@ -43,10 +47,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="No"
+            android:textSize="30dp"
             android:id="@+id/vNoButton"
             android:textColor="#fff"
             android:fontFamily="casual"
-            android:background="#F44336"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
 

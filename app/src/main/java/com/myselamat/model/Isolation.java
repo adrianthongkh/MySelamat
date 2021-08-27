@@ -1,15 +1,31 @@
 package com.myselamat.model;
 
+import com.google.firebase.firestore.DocumentId;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Isolation {
 
     private String uid;         // for user referencing
-    private Date startDate;
+    @DocumentId
+    private String docId;       // for document referencing
+    private @ServerTimestamp Date startDate;
     private int day_count;
-    private boolean status;
+    private boolean severityStatus;
 
     public Isolation() {}
+
+    public Isolation(String uid) {
+
+        this.uid = uid;
+        this.day_count = 0;
+        this.severityStatus = false;
+
+    }
 
     public String getUid() {
         return uid;
@@ -18,6 +34,10 @@ public class Isolation {
     public void setUid(String uid) {
         this.uid = uid;
     }
+
+    public String getDocId() { return docId; }
+
+    public void setDocId(String docId) { this.docId = docId; }
 
     public Date getStartDate() {
         return startDate;
@@ -35,11 +55,11 @@ public class Isolation {
         this.day_count = day_count;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isSeverityStatus() {
+        return severityStatus;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setSeverityStatus(boolean severityStatus) {
+        this.severityStatus = severityStatus;
     }
 }

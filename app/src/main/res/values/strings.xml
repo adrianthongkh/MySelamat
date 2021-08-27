@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">MySelamat</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA2CXNio-x0JwmapHCv-YnCjRZaCVERrvk</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_history">HistoryActivity</string>
     <string name="home_isolation_header"><u>Please answer these few questions daily.</u></string>
