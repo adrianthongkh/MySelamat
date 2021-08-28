@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".DetailActivity">
 
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/main_toolbar" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

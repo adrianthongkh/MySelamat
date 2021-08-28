@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.myselamat.util.MyCustomAdapter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,13 +48,13 @@ public class AffectedCountries extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affected_countries);
 
+        // main toolbar
+        TextView tv_app_header = findViewById(R.id.tv_app_header);
+        tv_app_header.setText("Affected Countries");
+
         edtSearch = findViewById(R.id.edtSearch);
         listView = findViewById(R.id.listView);
         simpleArcLoader = findViewById(R.id.loader);
-
-        getSupportActionBar().setTitle("Affected Countries");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         fetchData();
 

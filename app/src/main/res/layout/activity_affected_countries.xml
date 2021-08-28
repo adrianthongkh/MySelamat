@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".AffectedCountries">
 
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/main_toolbar" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -18,7 +22,7 @@
         android:hint="Search"
         android:drawablePadding="15dp"
         android:background="@drawable/edittext_shadow"
-        android:drawableLeft="@drawable/ic_search_black_24dp"/>
+        android:drawableLeft="@drawable/ic_baseline_search_24"/>
 
     <ListView
         android:layout_width="match_parent"
@@ -26,6 +30,7 @@
         android:id="@+id/listView"
         android:layout_below="@+id/edtSearch"
         android:layout_margin="10dp"/>
+
     <com.leo.simplearcloader.SimpleArcLoader
         android:layout_width="60dp"
         android:layout_height="60dp"

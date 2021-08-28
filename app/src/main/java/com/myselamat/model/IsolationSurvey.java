@@ -82,7 +82,7 @@ public class IsolationSurvey implements Serializable {
             s = "Mild symptoms of Covid-19 detected.\nConsume Paracetamol if necessary.";
         else if (score > 0.2 && score < 0.5)
             s = "Consult your nearest Covid-19 clinic \nfor further medical assistance \nif symptoms complicates";
-        else if (score > 0.5) {
+        else if (score >= 0.5) {
             s = "Medical assistance is required.\nClick Button below and call for help!";
             setSeverity(true);
         }
