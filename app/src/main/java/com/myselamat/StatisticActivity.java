@@ -3,18 +3,12 @@ package com.myselamat;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,7 +23,7 @@ import org.eazegraph.lib.models.PieModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class StatisticsFragment extends Fragment {
+public class StatisticActivity extends AppCompatActivity {
 
     TextView tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths,tvAffectedCountries;
     SimpleArcLoader simpleArcLoader;
@@ -37,33 +31,25 @@ public class StatisticsFragment extends Fragment {
     PieChart pieChart;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_statistic, container, false);
+        setContentView(R.layout.activity_statistic);
 
+        tvCases = findViewById(R.id.tvCases);
+        tvRecovered = findViewById(R.id.tvRecovered);
+        tvCritical = findViewById(R.id.tvCritical);
+        tvActive = findViewById(R.id.tvActive);
+        tvTodayCases = findViewById(R.id.tvTodayCases);
+        tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
+        tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
+        tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
 
-        tvCases = view.findViewById(R.id.tvCases);
-        tvRecovered = view.findViewById(R.id.tvRecovered);
-        tvCritical = view.findViewById(R.id.tvCritical);
-        tvActive = view.findViewById(R.id.tvActive);
-        tvTodayCases = view.findViewById(R.id.tvTodayCases);
-        tvTotalDeaths = view.findViewById(R.id.tvTotalDeaths);
-        tvTodayDeaths = view.findViewById(R.id.tvTodayDeaths);
-        tvAffectedCountries = view.findViewById(R.id.tvAffectedCountries);
-
-        simpleArcLoader = view.findViewById(R.id.loader);
-        scrollView = view.findViewById(R.id.scrollStats);
-        pieChart = view.findViewById(R.id.piechart);
+        simpleArcLoader = findViewById(R.id.loader);
+        scrollView = findViewById(R.id.scrollStats);
+        pieChart = findViewById(R.id.piechart);
 
 
         fetchData();
-
-        return view;
 
     }
 
@@ -119,25 +105,19 @@ public class StatisticsFragment extends Fragment {
                 simpleArcLoader.stop();
                 simpleArcLoader.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(StatisticActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
 
 
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Button btn_track = view.findViewById(R.id.btnTrack);
-        btn_track.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), AffectedCountries.class));
-            }
-        });
+    public void goTrackCountries(View view) {
+
+        startActivity(new Intent(getApplicationContext(), AffectedCountries.class));
+
     }
 }

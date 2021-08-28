@@ -27,6 +27,6 @@
         android:id="@+id/statisticsFragment"
         android:name="com.myselamat.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics"/>
+        tools:layout="@layout/fragment_statistics" />
 
 </navigation>
