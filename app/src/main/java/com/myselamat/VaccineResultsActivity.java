@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,14 @@ public class VaccineResultsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(VaccineResultsActivity.this, MainActivity.class));
                 VaccineResultsActivity.this.finish();
+            }
+        });
+
+        ImageView btn_back = findViewById(R.id.backBtn);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -29,6 +30,14 @@ public class VaccineQuestionActivity extends AppCompatActivity {
         vQuestion = findViewById(R.id.vQuestion);
         vYesButton = findViewById(R.id.vYesButton);
         vNoButton = findViewById(R.id.vNoButton);
+
+        ImageView btn_back = findViewById(R.id.backBtn);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         updateQuestion();
 
@@ -124,22 +133,16 @@ public class VaccineQuestionActivity extends AppCompatActivity {
 
     private void askToClose (){
         AlertDialog.Builder builder = new AlertDialog.Builder(VaccineQuestionActivity.this);
-        builder.setMessage("Are you sure you want to quit?");
+        builder.setMessage("Please finish answering the questions before you leave");
         builder.setCancelable(true);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+        builder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
 
             }
-        });
-        AlertDialog alert = builder.create();
+        });        AlertDialog alert = builder.create();
         alert.show();
     }
 

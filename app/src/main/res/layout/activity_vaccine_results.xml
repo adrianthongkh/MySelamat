@@ -6,6 +6,10 @@
     android:background="#E0FFFF"
     tools:context=".VaccineResultsActivity">
 
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/main_toolbar" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,28 +26,29 @@
         android:text="Sinovac is Recommended"
         android:gravity="center_horizontal" />
 
-
     <Button
-        android:layout_below="@+id/vGrade"
+        android:layout_below="@+id/vBack"
         android:id="@+id/vRetry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retry Vaccine Suitability Check"
-        android:padding="20dp"
-        android:layout_margin="4dp"
+        android:text="Retry"
+        android:padding="10dp"
         android:textColor="#fff"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:fontFamily="casual"
         android:layout_centerHorizontal="true"/>
 
     <Button
+        android:layout_below="@+id/vGrade"
+        android:id="@+id/vBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/vRetry"
-        android:layout_centerHorizontal="true"
-        android:textSize="15dp"
+        android:padding="20dp"
+        android:layout_margin="4dp"
+        android:textColor="#fff"
+        android:textSize="25dp"
         android:text="Back to Home"
-        android:id="@+id/vBack"/>
-
+        android:fontFamily="casual"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
