@@ -31,7 +31,7 @@
         android:paddingTop="25dp"
         android:paddingRight="10dp"
         android:paddingBottom="25dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis justo et dapibus ullamcorper. Pellentesque porttitor erat nec turpis lacinia facilisis. Curabitur ut congue magna, nec congue velit. Praesent rutrum."
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquet pharetra nulla, viverra varius velit posuere et."
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -41,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <TextView
         android:id="@+id/tv_hi_result2"
@@ -54,7 +54,7 @@
         android:paddingTop="25dp"
         android:paddingRight="10dp"
         android:paddingBottom="25dp"
-        android:text="You have completed the assessment for 14 days!"
+        android:text="You have completed the assessment for 14 days.\nDo confirm your covid-19 status if necessary at your nearest clinic."
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"

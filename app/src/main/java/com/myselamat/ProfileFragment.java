@@ -19,11 +19,18 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ProfileFragment extends Fragment {
 
@@ -82,7 +89,7 @@ public class ProfileFragment extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setCancelable(true);
-                builder.setMessage("By doing so, your covid status will be set to positive.\nProceed?");
+                builder.setMessage("By doing so, your covid status will be set to positive.\n\nPremises checked in within 14 days will have positive status.\n\nProceed?");
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -92,9 +99,9 @@ public class ProfileFragment extends Fragment {
                             db.collection("users").document(user.getUid()).update("status", true).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Toast.makeText(getContext(), "Covid-19 status set to positive.", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getContext(), "Covid-19 status set to positive.", Toast.LENGTH_SHORT).show();
                                     getActivity().getIntent().putExtra("status", true);
-                                    // TODO: update premises database
+                                    updatePremiseStatus();
                                 }
                             });
                         } else {
@@ -112,5 +119,74 @@ public class ProfileFragment extends Fragment {
                 dialog.show();
             }
         });
+    }
+
+    private void updatePremiseStatus() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        db.collection("History")
+                .whereEqualTo("idd", user.getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                boolean isAffected;
+                                try {
+                                    isAffected = checkDays(document.getString("CheckOut"));
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
+                                    break;
+                                }
+
+                                if (isAffected) {
+                                    db.collection("premises").whereEqualTo("name", document.getString("Location"))
+                                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                document.getReference().update("status", true);
+                                            }
+                                            Toast.makeText(getContext(), "Status updated.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }
+
+                        }
+
+                    }
+                });
+    }
+
+    private boolean checkDays(String checkOut) throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        try {
+            Date dCheckOut = format.parse(checkOut);
+            Date dCurrent = Calendar.getInstance().getTime();
+
+            long lCheckOut = dCheckOut.getTime();
+            long lCurrent = dCurrent.getTime();
+
+            long diff = lCurrent - lCheckOut;
+            long days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS) + 1;
+
+            if (days >= 14)
+                return false;
+
+            return true;
+
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
     }
 }

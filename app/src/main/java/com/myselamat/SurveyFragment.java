@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 
@@ -45,10 +46,11 @@ public class SurveyFragment extends Fragment {
 
             boolean isInfected = getActivity().getIntent().getBooleanExtra("status", false);
 
-            Intent intent = new Intent(getContext(), HomeIsolationActivity.class);
-            intent.putExtra("status", isInfected);
-
-            startActivity(intent);
+            if (isInfected) {
+                Intent intent = new Intent(getContext(), HomeIsolationActivity.class);
+                startActivity(intent);
+            } else
+                Toast.makeText(getContext(), "This survey is for infected individuals only.\nKindly update your status to proceed.", Toast.LENGTH_SHORT).show();
         });
 
         btn_vaccine.setOnClickListener(v -> {

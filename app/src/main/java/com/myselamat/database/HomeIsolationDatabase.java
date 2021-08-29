@@ -55,7 +55,7 @@ public class HomeIsolationDatabase {
                         Log.d(TAG, "Day count updated");
                     }
                 });
-                ref.update("severityStatus", !isolation.isSeverityStatus()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                ref.update("severityStatus", true).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "Severity Status updated");
