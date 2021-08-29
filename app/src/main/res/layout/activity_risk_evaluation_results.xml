@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E0FFFF"
     tools:context=".RiskEvaluationResultsActivity">
 
     <include
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/main_toolbar"
         layout="@layout/main_toolbar" />
 
     <TextView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:paddingTop="70dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="70dp"
+        android:textSize="24dp"
+        android:paddingTop="70sp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="70sp"
         android:textColor="#FFF"
         android:background="#228B22"
-        android:fontFamily="casual"
+        android:textStyle="bold"
         android:layout_below="@+id/main_toolbar"
         android:id="@+id/rGrade"
         android:text="Low Risk"
         android:gravity="center_horizontal"/>
 
     <TextView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rGrade"
+        app:layout_constraintBottom_toTopOf="@id/rBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:paddingTop="80dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingBottom="120dp"
         android:textColor="#000"
-        android:fontFamily="casual"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/rGrade"
@@ -45,20 +53,10 @@
         android:text="Just a common cold, no worries, rest up and you will be well soon. Stay Safe :)"
         android:gravity="center_horizontal"/>
 
-
     <Button
-        android:layout_below="@+id/rBack"
-        android:id="@+id/rRetry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Retry"
-        android:padding="10dp"
-        android:textColor="#fff"
-        android:textSize="17dp"
-        android:fontFamily="casual"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rRetry"
         android:layout_below="@+id/rGrade2"
         android:id="@+id/rBack"
         android:layout_width="wrap_content"
@@ -68,7 +66,22 @@
         android:textColor="#fff"
         android:textSize="25dp"
         android:text="Back to Home"
-        android:fontFamily="casual"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
-</RelativeLayout>
+    <Button
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="40sp"
+        android:layout_below="@+id/rBack"
+        android:id="@+id/rRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:textSize="17dp"
+        android:layout_centerHorizontal="true"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

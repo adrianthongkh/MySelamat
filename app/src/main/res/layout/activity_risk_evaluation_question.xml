@@ -1,74 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#E0FFFF"
     tools:context=".RiskEvaluationResultsActivity">
 
     <include
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/main_toolbar"
         layout="@layout/main_toolbar" />
 
     <TextView
+        app:layout_constraintTop_toBottomOf="@+id/main_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:fontFamily="casual"
-        android:id="@+id/question"
+        android:textStyle="bold"
+        android:id="@+id/rQuestion"
         android:textSize="24dp"
-        android:paddingTop="200dp"
-        android:paddingBottom="220dp"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
+        android:layout_marginBottom="20dp"
         android:text="1. Have you been having Fever, Chills and Shivering for the past 3 days?"/>
 
 
     <TextView
+        android:id="@+id/des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF6666"
         android:textColor="#FFFFFF"
+        android:textStyle="italic"
         android:text="*Please answer ALL of the questions with honesty, as it is not just your life at risk but the lives of those around you as well."
         android:textSize="20dp"
         android:padding="10dp"
-        android:id="@+id/dis"
-        android:layout_below="@id/question"/>
+        android:layout_below="@id/rQuestion"
+        app:layout_constraintBottom_toTopOf="@+id/rBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:background="#FF6666"
+        android:id="@+id/rBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="#FF6666"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="Yes"
-            android:textSize="30dp"
             android:id="@+id/rYesButton"
-            android:textColor="#fff"
-            android:fontFamily="casual"
-            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Yes"
+            android:textColor="#fff"
+            android:textSize="30dp" />
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:text="No"
-            android:textSize="30dp"
             android:id="@+id/rNoButton"
-            android:textColor="#fff"
-            android:fontFamily="casual"
-            android:layout_marginBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="No"
+            android:textColor="#fff"
+            android:textSize="30dp"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

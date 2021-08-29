@@ -27,7 +27,7 @@ public class RiskEvaluationQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_risk_evaluation_question);
 
-        rQuestion = (TextView)findViewById(R.id.question);
+        rQuestion = (TextView)findViewById(R.id.rQuestion);
         rYesButton = (Button)findViewById(R.id.rYesButton);
         rNoButton = (Button)findViewById(R.id.rNoButton);
 
