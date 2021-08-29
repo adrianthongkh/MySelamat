@@ -92,19 +92,26 @@ public class HomeIsolationActivity extends AppCompatActivity {
                 int flag = 0;
                 String temp = isolationSurvey.getMessageFromScore();
 
-                // remove from database --> day count already 13
-                if (isolation.getDay_count() == 13) {
-                    HomeIsolationDatabase.deleteIsolation(user.getUid());
-                }
-
                 if (!isolationSurvey.isSeverity())
                     flag = 1;
 
-                // Update database
-                HomeIsolationDatabase.updateIsolation(isolation, flag);
-
-                // start result activity
                 Intent intent = new Intent(HomeIsolationActivity.this, HomeIsolationResultActivity.class);
+
+                if (isolation.getDay_count() == 13) {
+                    // remove from database --> day count already 13
+                    HomeIsolationDatabase.deleteIsolation(isolation.getDocId());
+
+                    // put survey result as completed
+                    intent.putExtra("completed", true);
+
+                } else {
+                    // Update database
+                    HomeIsolationDatabase.updateIsolation(isolation, flag);
+
+                }
+                Toast.makeText(HomeIsolationActivity.this, "Assessment submitted", Toast.LENGTH_SHORT).show();
+
+                // put survey result as serializable
                 intent.putExtra("result", isolationSurvey);
 
                 startActivity(intent);
@@ -129,10 +136,13 @@ public class HomeIsolationActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void displayWarningMessage() {
+    private void displayWarningMessage(int day_count) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
+
+        if (day_count == 0)
+            builder.setMessage(isolationSurvey.getWarning() + "\nPlease complete the assessment every 24 hours.");
         builder.setMessage(isolationSurvey.getWarning());
         builder.setPositiveButton("I understand.", new DialogInterface.OnClickListener() {
             @Override
@@ -175,7 +185,7 @@ public class HomeIsolationActivity extends AppCompatActivity {
                                 if (isCompleted) {
                                     displayCompletedMessage();
                                 } else {
-                                    displayWarningMessage();
+                                    displayWarningMessage(isolation.getDay_count());
                                 }
                                 return;
                             }
@@ -183,7 +193,7 @@ public class HomeIsolationActivity extends AppCompatActivity {
                             // Create new isolation
                             isolation = new Isolation(user.getUid());
                             HomeIsolationDatabase.addIsolation(isolation);
-                            displayWarningMessage();
+                            displayWarningMessage(0);
                         }
 
                     }

@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
@@ -34,15 +35,24 @@ public class HomeIsolationResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_isolation_result);
 
+        // configure bain toolbar
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         TextView tv_result = findViewById(R.id.tv_hi_result);
         Button btn_homePage = findViewById(R.id.btn_hi_return);
         Button btn_call = findViewById(R.id.btn_call);
 
         isolationSurvey = (IsolationSurvey) getIntent().getSerializableExtra("result");
+        boolean completed = getIntent().getBooleanExtra("completed", false);
 
         tv_result.setText(isolationSurvey.getMessageFromScore());
 
+        // check if need to show call 999 button
         if (isolationSurvey.isSeverity()) {
             btn_call.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,6 +64,10 @@ public class HomeIsolationResultActivity extends AppCompatActivity {
         else {
             btn_call.setVisibility(View.INVISIBLE);
         }
+
+        // check if user has completed 14 days of assessment
+        if (completed)
+            findViewById(R.id.tv_hi_result2).setVisibility(View.VISIBLE);
 
         btn_homePage.setOnClickListener(new View.OnClickListener() {
             @Override
