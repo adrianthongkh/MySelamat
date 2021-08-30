@@ -91,6 +91,7 @@ public class Checkout extends AppCompatActivity {
 
                                Toast.makeText(Checkout.this,"Successfully Checked Out", Toast.LENGTH_SHORT).show();
                                Intent intent = new Intent(Checkout.this,MainActivity.class);
+                               finish();
                                startActivity(intent);
                            }
                        });

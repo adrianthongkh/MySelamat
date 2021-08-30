@@ -121,11 +121,16 @@ public class QRScanActivity extends AppCompatActivity{
                                         String timestamp = "" + System.currentTimeMillis();
                                         db.collection("History").document(timestamp).set(checkin);
                                         Intent tomain= new Intent(QRScanActivity.this,MainActivity.class);
-                                        startActivity(tomain);
+
+
 
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
                                         editor.putString("CheckIN","Yes");
                                         editor.commit();
+                                        finish();
+                                        Toast.makeText(QRScanActivity.this, "Check In Successfully", Toast.LENGTH_SHORT).show();
+
+                                        startActivity(tomain);
 
 
                                     }

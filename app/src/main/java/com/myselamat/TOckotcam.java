@@ -32,11 +32,12 @@ public class TOckotcam extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("CheckIN", Context.MODE_PRIVATE);
 
         ck=sharedpreferences.getString("CheckIN","No");
-       // Toast.makeText(TOckotcam.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+
         if (ck.toString().equals("Yes"))
         {
 
             Intent toout = new Intent(TOckotcam.this, Checkout.class);
+            finish();
             startActivity(toout);
 
         }
@@ -44,6 +45,7 @@ public class TOckotcam extends AppCompatActivity {
         {
 
             Intent toin = new Intent(TOckotcam.this, QRScanActivity.class);
+            finish();
             startActivity(toin);
 
         }

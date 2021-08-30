@@ -114,6 +114,7 @@ public class QRFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
         Button newbtn = view.findViewById(R.id.btn_checkin);
+
         navController = Navigation.findNavController(view);
         newbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +123,8 @@ public class QRFragment extends Fragment {
                 startActivity(toqr);
             }
         });
+
+
 
         // Navigate to get risk module
         ImageView btn_info = view.findViewById(R.id.btn_info);
