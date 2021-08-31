@@ -61,7 +61,7 @@ public class HomeIsoFragment extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (counter == 5) {
-                    isolationSurvey.setQuestion5((checkedId == R.id.rb_yes) ? false : true);
+                    isolationSurvey.setQuestion5((checkedId == R.id.rb_yes) ? true : false);
                     btn_submit.setVisibility(View.VISIBLE);
                 }
             }
@@ -106,6 +106,7 @@ public class HomeIsoFragment extends Fragment {
         ImageButton btn_right = view.findViewById(R.id.btn_right);
         ImageButton btn_left = view.findViewById(R.id.btn_left);
         Button btn_submit = getActivity().findViewById(R.id.btn_hi_submit);
+        RadioGroup rg = view.findViewById(R.id.rg_response);
 
         TextView tv_nav = view.findViewById(R.id.tv_hi_nav);
         tv_nav.setText(counter + "/5");
@@ -143,6 +144,8 @@ public class HomeIsoFragment extends Fragment {
                 tv_question.setText(isolationSurvey.getQuestion5String());
                 btn_left.setVisibility(View.VISIBLE);
                 btn_right.setVisibility(View.INVISIBLE);
+                if (rg.getCheckedRadioButtonId() != -1)
+                    btn_submit.setVisibility(View.VISIBLE);
                 break;
         }
 

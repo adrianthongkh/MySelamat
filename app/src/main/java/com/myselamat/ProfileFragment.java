@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -34,6 +35,10 @@ import java.util.concurrent.TimeUnit;
 
 public class ProfileFragment extends Fragment {
 
+    private boolean isInfected;
+    private FirebaseUser user;
+    private FirebaseFirestore db;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -41,6 +46,20 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // check covid status
+        db.collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    if (doc.exists()) {
+                        isInfected = doc.getBoolean("status");
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -80,50 +99,48 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         img_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setCancelable(true);
-                builder.setMessage("By doing so, your covid status will be set to positive.\n\nPremises checked in within 14 days will have positive status.\n\nProceed?");
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        boolean isInfected = getActivity().getIntent().getBooleanExtra("status", false);
+                if (!isInfected) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setCancelable(true);
+                    builder.setMessage("By doing so, your covid status will be set to positive.\n\nPremises checked in within 14 days will have positive status.\n\nProceed?");
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                        if (!isInfected) {
-                            db.collection("users").document(user.getUid()).update("status", true).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    //Toast.makeText(getContext(), "Covid-19 status set to positive.", Toast.LENGTH_SHORT).show();
-                                    getActivity().getIntent().putExtra("status", true);
-                                    updatePremiseStatus();
-                                }
-                            });
-                        } else {
-                            Toast.makeText(getContext(), "Covid-19 status is already positive.", Toast.LENGTH_SHORT).show();
+                            if (!isInfected) {
+                                db.collection("users").document(user.getUid()).update("status", true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        getActivity().getIntent().putExtra("status", true);
+                                        isInfected = true;
+                                        updatePremiseStatus();
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(getContext(), "Covid-19 status is already positive.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    });
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Toast.makeText(getContext(), "Covid-19 status is already positive.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void updatePremiseStatus() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         db.collection("History")
                 .whereEqualTo("idd", user.getUid())

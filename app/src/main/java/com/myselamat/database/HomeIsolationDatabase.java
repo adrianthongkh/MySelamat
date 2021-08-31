@@ -40,7 +40,7 @@ public class HomeIsolationDatabase {
         switch (flag) {
 
             case 1:
-                ref.update("day_count", !isolation.isSeverityStatus()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                ref.update("day_count", Integer.valueOf(isolation.getDay_count()+1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "Day count updated");
@@ -49,7 +49,7 @@ public class HomeIsolationDatabase {
                 break;
 
             default:
-                ref.update("day_count", isolation.getDay_count()+1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                ref.update("day_count", Integer.valueOf(isolation.getDay_count()+1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "Day count updated");
