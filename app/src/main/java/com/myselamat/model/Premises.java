@@ -5,18 +5,16 @@ import com.google.firebase.firestore.GeoPoint;
 public class Premises {
 
     private String docID;
-    private String qr_imagePath;
     private String name;
     private GeoPoint position;
     private boolean status;
 
-    // ---------- Constructor, Getters & Setters ---------- //
+    // ---------- Constructor, Getters & Setters ----------
 
     public Premises() {
     }
 
-    public Premises(String qr_imagePath, String name, GeoPoint position, boolean status) {
-        this.qr_imagePath = qr_imagePath;
+    public Premises(String name, GeoPoint position, boolean status) {
         this.name = name;
         this.position = position;
         this.status = status;
@@ -28,14 +26,6 @@ public class Premises {
 
     public void setDocID(String docID) {
         this.docID = docID;
-    }
-
-    public String getQr_imagePath() {
-        return qr_imagePath;
-    }
-
-    public void setQr_imagePath(String qr_imagePath) {
-        this.qr_imagePath = qr_imagePath;
     }
 
     public String getName() {

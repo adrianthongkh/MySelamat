@@ -7,25 +7,28 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-feature android:name="android.hardware.camera.any" />
-    <uses-permission android:name="android.permission.CAMERA"/>
 
-
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-
-
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySelamat">
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ViewProfileActivity"
             android:exported="true" />
@@ -34,40 +37,29 @@
             android:exported="true" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
-        <activity
-            android:name=".HomeIsolationResultActivity"
-            android:label="Home Isolation Message" />
+        <activity android:name=".HomeIsolationResultActivity"/>
         <activity android:name=".VaccineActivity" />
-        <activity android:name=".VaccineQuestionActivity"/>
-        <activity android:name=".VaccineResultsActivity"/>
-        <activity android:name=".Checkout"/>
-        <activity
-            android:name=".HomeIsolationActivity"
-            android:label="Home Isolation" />
-
+        <activity android:name=".VaccineQuestionActivity" />
+        <activity android:name=".VaccineResultsActivity" />
+        <activity android:name=".Checkout" />
+        <activity android:name=".HomeIsolationActivity"/>
         <activity android:name=".RiskEvaluationActivity" />
-        <activity android:name=".RiskEvaluationQuestionActivity"/>
-        <activity android:name=".RiskEvaluationResultsActivity"/>
-
+        <activity android:name=".RiskEvaluationQuestionActivity" />
+        <activity android:name=".RiskEvaluationResultsActivity" />
         <activity android:name=".UpdateDetailsActivity" />
         <activity android:name=".RiskPredictionActivity" />
-
         <activity android:name=".HistoryActivity" />
         <activity android:name=".QRScanActivity" />
-        <activity android:name=".TOckotcam"/>
+        <activity android:name=".TOckotcam" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".AffectedCountries"/>
-        <activity android:name=".DetailActivity"/>
+        <activity android:name=".AffectedCountries" />
+        <activity android:name=".DetailActivity" />
     </application>
 
 </manifest>

@@ -34,7 +34,6 @@ public class PremisesDatabase {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Premises p = new Premises();
                                 p.setDocID(document.getId());
-                                p.setQr_imagePath(document.getString("QRImgPath"));
                                 p.setPosition(document.getGeoPoint("position"));
                                 p.setName(document.getString("name"));
                                 p.setStatus(document.getBoolean("status"));
